@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almeida & Vasconcelos | Advocacia e Consultoria Jurídica</title>
+    <meta name="description" content="Atuação jurídica pautada pela ética, técnica e transparência nas áreas de Direito Civil, Empresarial, Imobiliário e Sucessório.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#0B131E',
+                            900: '#101C2C',
+                            800: '#1A2B42',
+                            700: '#273E5C',
+                        },
+                        stone: {
+                            50: '#FAF9F6',
+                            100: '#F3F1EC',
+                            200: '#E5E1D8',
+                            300: '#D1CBC0',
+                            500: '#78736A',
+                            700: '#45423C',
+                            900: '#1F1E1B',
+                        },
+                        bronze: {
+                            600: '#8C6D46',
+                            700: '#735836',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Estilos Customizados -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="font-sans text-stone-900 selection:bg-navy-900 selection:text-stone-50 flex flex-col min-h-screen">
+
+    <!-- ================================================================
+         CABEÇALHO INSTITUCIONAL
+    ================================================================= -->
+    <header id="main-header" class="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-sm border-b editorial-border transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
+
+            <!-- Logotipo Tipográfico -->
+            <a href="#inicio" onclick="navigateTo('home', 'inicio')" class="group flex flex-col focus:outline-none">
+                <span class="font-serif text-xl sm:text-2xl font-semibold tracking-tight text-navy-900 leading-none">
+                    ALMEIDA & VASCONCELOS
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.22em] text-stone-500 mt-1 font-medium">
+                    Advocacia e Consultoria Jurídica
+                </span>
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm text-stone-700" aria-label="Navegação Principal">
+                <a href="#sobre" onclick="navigateTo('home', 'sobre')" class="nav-link hover:text-navy-900 transition-colors py-1">O Escritório</a>
+                <a href="#atuacao" onclick="navigateTo('home', 'atuacao')" class="nav-link hover:text-navy-900 transition-colors py-1">Áreas de Atuação</a>
+                <a href="#profissional" onclick="navigateTo('home', 'profissional')" class="nav-link hover:text-navy-900 transition-colors py-1">Responsável</a>
+                <a href="#diferenciais" onclick="navigateTo('home', 'diferenciais')" class="nav-link hover:text-navy-900 transition-colors py-1">Atendimento</a>
+                <span class="h-4 w-px bg-stone-300" aria-hidden="true"></span>
+                <button type="button" id="nav-blog-btn" onclick="navigateTo('blog')" class="nav-link hover:text-navy-900 transition-colors py-1 font-medium text-navy-900">
+                    Conteúdos Jurídicos
+                </button>
+            </nav>
+
+            <!-- Contato + Hambúrguer -->
+            <div class="flex items-center space-x-4">
+                <a href="#contato" onclick="navigateTo('home', 'contato')" class="hidden sm:inline-flex items-center px-5 py-2.5 text-xs uppercase tracking-widest font-medium border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-stone-50 transition-colors rounded-sm">
+                    Contato
+                </a>
+                <button id="mobile-menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" class="md:hidden p-2 text-navy-900 hover:bg-stone-200/60 rounded-sm focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-stone-50 border-b editorial-border px-6 pt-4 pb-6 space-y-3">
+            <a href="#sobre" onclick="navigateTo('home', 'sobre'); toggleMobileMenu(false)" class="block py-2 text-base text-stone-700 hover:text-navy-900 border-b border-stone-200/60">O Escritório</a>
+            <a href="#atuacao" onclick="navigateTo('home', 'atuacao'); toggleMobileMenu(false)" class="block py-2 text-base text-stone-700 hover:text-navy-900 border-b border-stone-200/60">Áreas de Atuação</a>
+            <a href="#profissional" onclick="navigateTo('home', 'profissional'); toggleMobileMenu(false)" class="block py-2 text-base text-stone-700 hover:text-navy-900 border-b border-stone-200/60">Profissional Responsável</a>
+            <a href="#diferenciais" onclick="navigateTo('home', 'diferenciais'); toggleMobileMenu(false)" class="block py-2 text-base text-stone-700 hover:text-navy-900 border-b border-stone-200/60">Atendimento e Ética</a>
+            <button type="button" onclick="navigateTo('blog'); toggleMobileMenu(false)" class="block w-full text-left py-2 text-base font-medium text-navy-900 border-b border-stone-200/60">
+                Conteúdos Jurídicos (Publicações)
+            </button>
+            <div class="pt-2">
+                <a href="#contato" onclick="navigateTo('home', 'contato'); toggleMobileMenu(false)" class="block w-full text-center py-3 text-xs uppercase tracking-widest font-medium bg-navy-900 text-stone-50 rounded-sm">
+                    Agendar Atendimento
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================================================
+         PÁGINA 1: INSTITUCIONAL
+    ================================================================= -->
+    <main id="page-home" class="page-view flex-grow">
+
+        <!-- HERO -->
+        <section id="inicio" class="pt-12 pb-20 lg:pt-20 lg:pb-28 border-b editorial-border">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    <div class="lg:col-span-7 space-y-7">
+                        <div class="inline-flex items-center space-x-3">
+                            <span class="w-8 h-px bg-bronze-600"></span>
+                            <span class="text-xs uppercase tracking-[0.2em] text-bronze-700 font-medium">
+                                Advocacia Consultiva e Contenciosa
+                            </span>
+                        </div>
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-[3.4rem] font-semibold text-navy-900 leading-[1.12] tracking-tight">
+                            Segurança jurídica, rigor técnico e clareza na defesa de interesses patrimoniais e empresariais.
+                        </h1>
+                        <p class="text-base sm:text-lg text-stone-700 leading-relaxed max-w-2xl font-normal">
+                            O escritório <strong class="font-medium text-navy-900">Almeida & Vasconcelos Advocacia</strong> atua com foco na prevenção de litígios e na condução técnica de demandas judiciais e extrajudiciais, oferecendo atendimento direto e pautado pela ética profissional.
+                        </p>
+                        <div class="pt-2 flex flex-col sm:flex-row gap-4">
+                            <a href="#atuacao" class="inline-flex justify-center items-center px-7 py-3.5 bg-navy-900 text-stone-50 text-xs uppercase tracking-[0.16em] font-medium hover:bg-navy-800 transition-colors rounded-sm">
+                                Conhecer Áreas de Atuação
+                            </a>
+                            <a href="#contato" class="inline-flex justify-center items-center px-7 py-3.5 border border-stone-300 text-navy-900 text-xs uppercase tracking-[0.16em] font-medium hover:border-navy-900 transition-colors rounded-sm">
+                                Entrar em Contato
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5">
+                        <figure class="relative">
+                            <div class="aspect-[4/5] w-full overflow-hidden bg-stone-200 rounded-sm border editorial-border">
+                                <img
+                                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+                                    alt="Sala de reuniões do escritório Almeida & Vasconcelos Advocacia"
+                                    onerror="this.onerror=null;this.src='https://placehold.co/800x1000/101C2C/FAF9F6?text=Almeida+%26+Vasconcelos';"
+                                    class="w-full h-full object-cover object-center grayscale-[15%] contrast-[1.02]"
+                                >
+                            </div>
+                            <figcaption class="mt-3 flex justify-between items-center text-xs text-stone-500">
+                                <span>Sede Institucional — São Paulo, SP</span>
+                                <span class="font-serif italic text-stone-700">OAB/SP</span>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE O ESCRITÓRIO -->
+        <section id="sobre" class="py-20 lg:py-28 border-b editorial-border bg-stone-100/50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    <div class="lg:col-span-4 space-y-3">
+                        <span class="text-xs uppercase tracking-[0.2em] text-bronze-700 font-medium block">Institucional</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy-900 leading-tight">Sobre o Escritório</h2>
+                        <div class="w-12 h-px bg-navy-900/30 pt-2"></div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-6 text-stone-700 text-base leading-relaxed">
+                        <p class="text-lg text-navy-900 font-normal leading-relaxed">
+                            Fundado com o propósito de resgatar a advocacia artesanal e próxima ao cliente, o escritório estrutura sua prática na análise criteriosa de cada caso antes da adoção de qualquer medida administrativa ou judicial.
+                        </p>
+                        <p>
+                            Acreditamos que o exercício da advocacia exige linguagem clara e objetiva. Traduzimos a complexidade das normas jurídicas em pareceres e orientações práticas, permitindo que pessoas físicas e empresas tomem decisões fundamentadas e conscientes dos riscos envolvidos.
+                        </p>
+                        <p>
+                            Nossa atuação observa rigorosamente o Código de Ética e Disciplina da Ordem dos Advogados do Brasil (OAB), priorizando a confidencialidade absoluta, a lealdade processual e a comunicação transparente em todas as etapas do atendimento.
+                        </p>
+                        <div class="pt-6 mt-6 border-t editorial-border grid grid-cols-1 sm:grid-cols-3 gap-8">
+                            <div>
+                                <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Rigor Técnico</h3>
+                                <p class="text-sm text-stone-600 leading-relaxed">Estudo aprofundado da legislação e da jurisprudência aplicável a cada demanda específica.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Transparência</h3>
+                                <p class="text-sm text-stone-600 leading-relaxed">Esclarecimento realista sobre cenários, prazos e custos processuais desde a primeira consulta.</p>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Sigilo e Ética</h3>
+                                <p class="text-sm text-stone-600 leading-relaxed">Proteção integral das informações confiadas ao escritório e postura urbana e respeitosa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÁREAS DE ATUAÇÃO -->
+        <section id="atuacao" class="py-20 lg:py-28 border-b editorial-border">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
+                <div class="max-w-2xl mb-14 space-y-3">
+                    <span class="text-xs uppercase tracking-[0.2em] text-bronze-700 font-medium block">Especialidades</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy-900 leading-tight">Áreas de Atuação</h2>
+                    <p class="text-base text-stone-600 leading-relaxed">
+                        Concentramos nossa prática em quatro frentes de atuação, assegurando profundidade técnica na consultoria preventiva e na representação contenciosa.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 border-t editorial-border">
+                    <!-- Direito Civil e Contratos -->
+                    <div class="py-10 md:pr-10 border-b editorial-border md:border-r">
+                        <div class="flex items-baseline justify-between mb-3">
+                            <h3 class="font-serif text-2xl font-semibold text-navy-900">Direito Civil e Contratos</h3>
+                            <span class="text-xs font-serif italic text-stone-400">01</span>
+                        </div>
+                        <p class="text-sm text-stone-700 leading-relaxed mb-4">
+                            Assessoria na estruturação de relações obrigacionais e resolução de conflitos patrimoniais entre particulares e empresas.
+                        </p>
+                        <ul class="text-xs text-stone-600 space-y-1.5 border-l-2 border-stone-200 pl-3.5">
+                            <li>Elaboração, revisão e rescisão de contratos civis e comerciais</li>
+                            <li>Ações de responsabilidade civil e reparação de danos materiais</li>
+                            <li>Cobrança judicial e extrajudicial de créditos e títulos</li>
+                        </ul>
+                    </div>
+                    <!-- Direito Empresarial -->
+                    <div class="py-10 md:pl-10 border-b editorial-border">
+                        <div class="flex items-baseline justify-between mb-3">
+                            <h3 class="font-serif text-2xl font-semibold text-navy-900">Direito Empresarial</h3>
+                            <span class="text-xs font-serif italic text-stone-400">02</span>
+                        </div>
+                        <p class="text-sm text-stone-700 leading-relaxed mb-4">
+                            Suporte jurídico contínuo para sociedades empresárias na organização societária e prevenção de passivos operacionais.
+                        </p>
+                        <ul class="text-xs text-stone-600 space-y-1.5 border-l-2 border-stone-200 pl-3.5">
+                            <li>Constituição de sociedades, alterações contratuais e acordos de sócios</li>
+                            <li>Consultoria jurídica preventiva para rotina comercial</li>
+                            <li>Resolução de conflitos societários e dissolução parcial</li>
+                        </ul>
+                    </div>
+                    <!-- Direito Imobiliário -->
+                    <div class="py-10 md:pr-10 border-b md:border-b-0 editorial-border md:border-r">
+                        <div class="flex items-baseline justify-between mb-3">
+                            <h3 class="font-serif text-2xl font-semibold text-navy-900">Direito Imobiliário</h3>
+                            <span class="text-xs font-serif italic text-stone-400">03</span>
+                        </div>
+                        <p class="text-sm text-stone-700 leading-relaxed mb-4">
+                            Análise de segurança jurídica em operações imobiliárias e regularização registral de bens urbanos e rurais.
+                        </p>
+                        <ul class="text-xs text-stone-600 space-y-1.5 border-l-2 border-stone-200 pl-3.5">
+                            <li>Auditoria documental (Due Diligence) para compra e venda de imóveis</li>
+                            <li>Contratos de locação residencial, comercial e built-to-suit</li>
+                            <li>Regularização fundiária, usucapião e retificação de registro</li>
+                        </ul>
+                    </div>
+                    <!-- Direito de Família e Sucessões -->
+                    <div class="py-10 md:pl-10">
+                        <div class="flex items-baseline justify-between mb-3">
+                            <h3 class="font-serif text-2xl font-semibold text-navy-900">Direito de Família e Sucessões</h3>
+                            <span class="text-xs font-serif italic text-stone-400">04</span>
+                        </div>
+                        <p class="text-sm text-stone-700 leading-relaxed mb-4">
+                            Condução discreta e consensual de questões familiares e organização sucessória patrimonial.
+                        </p>
+                        <ul class="text-xs text-stone-600 space-y-1.5 border-l-2 border-stone-200 pl-3.5">
+                            <li>Inventários e partilhas judiciais e extrajudiciais em cartório</li>
+                            <li>Planejamento sucessório e elaboração de testamentos</li>
+                            <li>Divórcios consensuais, pactos antenupciais e guarda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFISSIONAL RESPONSÁVEL -->
+        <section id="profissional" class="py-20 lg:py-28 border-b editorial-border bg-stone-100/50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-4">
+                        <div class="aspect-[3/4] w-full max-w-sm mx-auto lg:mx-0 overflow-hidden bg-stone-200 rounded-sm border editorial-border">
+                            <img
+                                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80"
+                                alt="Dr. Henrique Almeida Vasconcelos — Advogado Responsável"
+                                onerror="this.onerror=null;this.src='https://placehold.co/600x800/101C2C/FAF9F6?text=Dr.+Henrique+Vasconcelos';"
+                                class="w-full h-full object-cover object-top grayscale-[20%]"
+                            >
+                        </div>
+                    </div>
+                    <div class="lg:col-span-8 space-y-6">
+                        <div>
+                            <span class="text-xs uppercase tracking-[0.2em] text-bronze-700 font-medium block mb-2">Advogado Responsável</span>
+                            <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy-900">Dr. Henrique Almeida Vasconcelos</h2>
+                            <p class="text-sm font-medium text-stone-600 mt-1">Inscrito na Ordem dos Advogados do Brasil — Seccional São Paulo sob o nº 312.480 (OAB/SP)</p>
+                        </div>
+                        <div class="w-12 h-px bg-navy-900/25"></div>
+                        <p class="text-base text-stone-700 leading-relaxed">
+                            Com atuação dedicada à advocacia cível e empresarial, conduz pessoalmente a análise estratégica, a redação das peças técnicas e o atendimento aos clientes do escritório, assegurando acompanhamento direto sem intermediações automatizadas.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                            <div class="border-l border-stone-300 pl-4">
+                                <h3 class="text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Formação Acadêmica</h3>
+                                <p class="text-sm text-navy-900 font-medium">Bacharel em Direito</p>
+                                <p class="text-xs text-stone-600 mt-0.5">Faculdade de Direito — Universidade Presbiteriana Mackenzie</p>
+                            </div>
+                            <div class="border-l border-stone-300 pl-4">
+                                <h3 class="text-xs uppercase tracking-wider text-stone-500 font-semibold mb-1">Pós-Graduação</h3>
+                                <p class="text-sm text-navy-900 font-medium">Especialização em Direito Contratual e Empresarial</p>
+                                <p class="text-xs text-stone-600 mt-0.5">Pontifícia Universidade Católica de São Paulo (PUC-SP)</p>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <span class="text-xs text-stone-500">Membro efetivo da Comissão de Direito Civil e Empresarial da OAB/SP.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIFERENCIAIS E ATENDIMENTO -->
+        <section id="diferenciais" class="py-20 lg:py-28 border-b editorial-border">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-4 space-y-3">
+                        <span class="text-xs uppercase tracking-[0.2em] text-bronze-700 font-medium block">Metodologia</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-navy-900 leading-tight">Padrão de Atendimento</h2>
+                        <p class="text-sm text-stone-600 leading-relaxed pt-2">
+                            Organização interna e protocolos claros para que cada cliente acompanhe o andamento de suas demandas com previsibilidade.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
+                        <div>
+                            <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Atendimento Direto pelo Advogado</h3>
+                            <p class="text-sm text-stone-600 leading-relaxed">As reuniões e consultas são conduzidas diretamente pelo profissional responsável pelo caso, tanto presencialmente quanto por videoconferência.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Relatórios Periódicos de Andamento</h3>
+                            <p class="text-sm text-stone-600 leading-relaxed">Comunicação proativa sempre que houver movimentação processual relevante, traduzindo despachos e decisões para linguagem acessível.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Análise Prévia de Viabilidade</h3>
+                            <p class="text-sm text-stone-600 leading-relaxed">Parecer inicial fundamentado sobre riscos jurídicos, documentação necessária e alternativas extrajudiciais antes do ajuizamento de ações.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl font-semibold text-navy-900 mb-2">Proteção de Dados e Confidencialidade</h3>
+                            <p class="text-sm text-stone-600 leading-relaxed">Tratamento seguro de documentos e informações sensíveis em estrita conformidade com a LGPD e as prerrogativas profissionais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTATO -->
+        <section id="contato" class="py-20 lg:py-28 bg-navy-900 text-stone-50">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-14">
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="space-y-3">
+                            <span class="text-xs uppercase tracking-[0.2em] text-stone-400 font-medium block">Canais Oficiais</span>
+                            <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-stone-50 leading-tight">Contato e Localização</h2>
+                            <p class="text-sm text-stone-300 leading-relaxed">Para agendamento de consultas presenciais ou virtuais, entre em contato pelos canais institucionais abaixo ou envie uma mensagem.</p>
+                        </div>
+                        <div class="space-y-5 text-sm border-t border-stone-700/60 pt-6">
+                            <div>
+                                <span class="block text-xs uppercase tracking-wider text-stone-400 mb-1">Telefone Fixo</span>
+                                <a href="tel:+551132849010" class="text-stone-50 hover:text-stone-300 transition-colors font-medium">+55 (11) 3284-9010</a>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-wider text-stone-400 mb-1">WhatsApp Institucional</span>
+                                <a href="https://wa.me/5511994821020?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20atendimento%20jur%C3%ADdico." target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-stone-50 hover:text-stone-300 transition-colors font-medium underline underline-offset-4 decoration-stone-500">
+                                    +55 (11) 99482-1020 (Iniciar conversa)
+                                </a>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-wider text-stone-400 mb-1">E-mail Profissional</span>
+                                <a href="mailto:contato@almeidavasconcelos.adv.br" class="text-stone-50 hover:text-stone-300 transition-colors font-medium">contato@almeidavasconcelos.adv.br</a>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-wider text-stone-400 mb-1">Endereço do Escritório</span>
+                                <p class="text-stone-200 leading-relaxed">
+                                    Av. Paulista, 1374 — Conjunto 1104, Bela Vista<br>
+                                    São Paulo/SP — CEP 01310-100
+                                </p>
+                                <a href="https://maps.google.com/?q=Av.+Paulista,+1374+-+Bela+Vista,+São+Paulo+-+SP" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-xs uppercase tracking-wider text-stone-300 hover:text-white border-b border-stone-500 pb-0.5 transition-colors">
+                                    Ver localização no Google Maps &rarr;
+                                </a>
+                            </div>
+                            <div>
+                                <span class="block text-xs uppercase tracking-wider text-stone-400 mb-1">Horário de Atendimento</span>
+                                <p class="text-stone-300">Segunda a sexta-feira, das 09h00 às 18h00 (mediante agendamento prévio).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário -->
+                    <div class="lg:col-span-7 bg-navy-950/60 border border-stone-700/60 p-8 sm:p-10 rounded-sm">
+                        <h3 class="font-serif text-2xl font-semibold text-stone-50 mb-2">Solicitação de Atendimento</h3>
+                        <p class="text-xs text-stone-400 mb-6">Preencha os campos abaixo com um breve resumo da sua necessidade. Retornaremos em horário comercial.</p>
+                        <form id="contact-form" class="space-y-5" novalidate>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="nome" class="block text-xs uppercase tracking-wider text-stone-300 mb-2">Nome Completo *</label>
+                                    <input type="text" id="nome" name="nome" required placeholder="Seu nome" class="w-full px-4 py-3 bg-navy-900 border border-stone-700 text-stone-100 text-sm rounded-sm focus:outline-none focus:border-stone-400 placeholder-stone-500">
+                                </div>
+                                <div>
+                                    <label for="telefone" class="block text-xs uppercase tracking-wider text-stone-300 mb-2">Telefone / WhatsApp *</label>
+                                    <input type="tel" id="telefone" name="telefone" required placeholder="(11) 90000-0000" class="w-full px-4 py-3 bg-navy-900 border border-stone-700 text-stone-100 text-sm rounded-sm focus:outline-none focus:border-stone-400 placeholder-stone-500">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="email" class="block text-xs uppercase tracking-wider text-stone-300 mb-2">E-mail *</label>
+                                    <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com.br" class="w-full px-4 py-3 bg-navy-900 border border-stone-700 text-stone-100 text-sm rounded-sm focus:outline-none focus:border-stone-400 placeholder-stone-500">
+                                </div>
+                                <div>
+                                    <label for="area" class="block text-xs uppercase tracking-wider text-stone-300 mb-2">Área Relacionada</label>
+                                    <select id="area" name="area" class="w-full px-4 py-3 bg-navy-900 border border-stone-700 text-stone-100 text-sm rounded-sm focus:outline-none focus:border-stone-400">
+                                        <option value="Direito Civil e Contratos">Direito Civil e Contratos</option>
+                                        <option value="Direito Empresarial">Direito Empresarial</option>
+                                        <option value="Direito Imobiliário">Direito Imobiliário</option>
+                                        <option value="Direito de Família e Sucessões">Direito de Família e Sucessões</option>
+                                        <option value="Outro Assunto">Outro Assunto / Consulta Geral</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="mensagem" class="block text-xs uppercase tracking-wider text-stone-300 mb-2">Resumo da Solicitação *</label>
+                                <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Descreva brevemente o contexto da sua dúvida ou demanda..." class="w-full px-4 py-3 bg-navy-900 border border-stone-700 text-stone-100 text-sm rounded-sm focus:outline-none focus:border-stone-400 placeholder-stone-500"></textarea>
+                            </div>
+                            <div class="flex items-start space-x-2.5 pt-1">
+                                <input type="checkbox" id="lgpd" required class="mt-1 rounded-sm border-stone-600 bg-navy-900 text-bronze-600 focus:ring-0">
+                                <label for="lgpd" class="text-xs text-stone-400 leading-relaxed">
+                                    Concordo com o tratamento dos meus dados exclusivamente para retorno deste contato, nos termos da Política de Privacidade.
+                                </label>
+                            </div>
+                            <div id="form-feedback" class="hidden p-4 rounded-sm text-sm border" role="alert"></div>
+                            <div class="pt-2">
+                                <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-stone-50 text-navy-900 text-xs uppercase tracking-[0.16em] font-semibold hover:bg-stone-200 transition-colors rounded-sm">
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================================================
+         PÁGINA 2: CONTEÚDOS JURÍDICOS
+    ================================================================= -->
+    <section id="page-blog" class="hidden page-view flex-grow py-16 lg:py-24">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8">
+            <div class="border-b editorial-border pb-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div class="space-y-3 max-w-2xl">
+                    <div class="flex items-center space-x-2 text-xs text-stone-500">
+                        <button type="button" onclick="navigateTo('home', 'inicio')" class="hover:text-navy-900 transition-colors">Início</button>
+                        <span>/</span>
+                        <span class="text-navy-900 font-medium">Conteúdos Jurídicos</span>
+                    </div>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-navy-900 leading-tight">Publicações e Informativos Jurídicos</h1>
+                    <p class="text-base text-stone-600 leading-relaxed">Artigos técnicos, atualizações legislativas e orientações gerais elaboradas com caráter estritamente informativo.</p>
+                </div>
+                <div class="flex flex-wrap gap-2" id="blog-categories">
+                    <button type="button" onclick="filterPosts('Todas')" class="category-btn active px-3.5 py-1.5 text-xs border border-navy-900 bg-navy-900 text-stone-50 rounded-sm transition-colors">Todas</button>
+                    <button type="button" onclick="filterPosts('Direito Imobiliário')" class="category-btn px-3.5 py-1.5 text-xs border border-stone-300 text-stone-700 hover:border-navy-900 rounded-sm transition-colors">Imobiliário</button>
+                    <button type="button" onclick="filterPosts('Direito Empresarial')" class="category-btn px-3.5 py-1.5 text-xs border border-stone-300 text-stone-700 hover:border-navy-900 rounded-sm transition-colors">Empresarial</button>
+                    <button type="button" onclick="filterPosts('Sucessões e Família')" class="category-btn px-3.5 py-1.5 text-xs border border-stone-300 text-stone-700 hover:border-navy-900 rounded-sm transition-colors">Sucessões</button>
+                </div>
+            </div>
+            <div id="blog-list-container" class="divide-y divide-stone-200/80"></div>
+            <article id="blog-article-reader" class="hidden max-w-3xl mx-auto">
+                <button type="button" onclick="closeArticleReader()" class="inline-flex items-center text-xs uppercase tracking-widest text-stone-600 hover:text-navy-900 mb-8 transition-colors">
+                    &larr; Voltar para todas as publicações
+                </button>
+                <div id="article-reader-content" class="space-y-6"></div>
+                <div class="mt-12 pt-8 border-t editorial-border bg-stone-100/70 p-6 rounded-sm">
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        <strong class="text-navy-900">Nota Informativa:</strong> Este artigo possui caráter meramente informativo e educativo, não substituindo a consulta jurídica individualizada para análise de casos concretos.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         RODAPÉ
+    ================================================================= -->
+    <footer class="bg-navy-950 text-stone-400 border-t border-stone-800 text-xs">
+        <div class="max-w-6xl mx-auto px-6 sm:px-8 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-stone-800/80">
+                <div class="md:col-span-5 space-y-3">
+                    <p class="font-serif text-xl font-semibold text-stone-100 tracking-tight">ALMEIDA & VASCONCELOS</p>
+                    <p class="text-stone-400 leading-relaxed max-w-sm">
+                        Sociedade Individual de Advocacia registrada na Ordem dos Advogados do Brasil — Seccional São Paulo (OAB/SP). Atuação pautada pela ética, sigilo e rigor técnico.
+                    </p>
+                    <p class="text-stone-500 pt-1">Responsável Técnico: Dr. Henrique Almeida Vasconcelos — OAB/SP 312.480</p>
+                </div>
+                <div class="md:col-span-3 space-y-2.5">
+                    <p class="uppercase tracking-widest text-stone-300 font-semibold mb-3">Navegação</p>
+                    <ul class="space-y-2">
+                        <li><a href="#sobre" onclick="navigateTo('home', 'sobre')" class="hover:text-stone-200 transition-colors">Sobre o Escritório</a></li>
+                        <li><a href="#atuacao" onclick="navigateTo('home', 'atuacao')" class="hover:text-stone-200 transition-colors">Áreas de Atuação</a></li>
+                        <li><a href="#profissional" onclick="navigateTo('home', 'profissional')" class="hover:text-stone-200 transition-colors">Profissional Responsável</a></li>
+                        <li><button type="button" onclick="navigateTo('blog')" class="hover:text-stone-200 transition-colors">Conteúdos Jurídicos</button></li>
+                        <li><a href="#contato" onclick="navigateTo('home', 'contato')" class="hover:text-stone-200 transition-colors">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-4 space-y-2.5">
+                    <p class="uppercase tracking-widest text-stone-300 font-semibold mb-3">Contato & Endereço</p>
+                    <p>Av. Paulista, 1374, Conj. 1104 — São Paulo/SP</p>
+                    <p>Tel.: (11) 3284-9010 | WhatsApp: (11) 99482-1020</p>
+                    <p>contato@almeidavasconcelos.adv.br</p>
+                    <div class="pt-2 flex items-center space-x-4">
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="text-stone-300 hover:text-white underline underline-offset-4">LinkedIn Institucional</a>
+                        <button type="button" onclick="togglePrivacyModal(true)" class="text-stone-300 hover:text-white underline underline-offset-4">Política de Privacidade</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-stone-500">
+                <p>&copy; 2026 Almeida & Vasconcelos Advocacia. Todos os direitos reservados.</p>
+                <p>Conteúdo estritamente informativo, em conformidade com o Provimento 205/2021 da OAB.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================================================
+         MODAL: POLÍTICA DE PRIVACIDADE
+    ================================================================= -->
+    <div id="privacy-modal" class="hidden fixed inset-0 z-50 bg-navy-950/75 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+        <div class="bg-stone-50 border editorial-border max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-sm shadow-xl">
+            <div class="flex justify-between items-start border-b editorial-border pb-4 mb-5">
+                <h2 id="privacy-title" class="font-serif text-2xl font-semibold text-navy-900">Política de Privacidade e Proteção de Dados</h2>
+                <button type="button" onclick="togglePrivacyModal(false)" aria-label="Fechar" class="text-stone-500 hover:text-navy-900 p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="space-y-4 text-sm text-stone-700 leading-relaxed">
+                <p>O escritório <strong>Almeida & Vasconcelos Advocacia</strong> respeita a privacidade dos titulares de dados pessoais e observa rigorosamente a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD) e o sigilo profissional previsto no Estatuto da Advocacia.</p>
+                <p><strong>1. Coleta e Finalidade:</strong> Os dados fornecidos voluntariamente no formulário de contato (nome, telefone, e-mail e resumo da solicitação) são utilizados exclusivamente para análise preliminar e retorno institucional ao solicitante.</p>
+                <p><strong>2. Compartilhamento:</strong> Não comercializamos, cedemos ou compartilhamos dados pessoais com terceiros para fins publicitários ou comerciais.</p>
+                <p><strong>3. Direitos do Titular:</strong> O titular poderá solicitar a confirmação, correção ou eliminação de seus dados de nossa base de contatos a qualquer momento por meio do e-mail <em>contato@almeidavasconcelos.adv.br</em>.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t editorial-border flex justify-end">
+                <button type="button" onclick="togglePrivacyModal(false)" class="px-5 py-2 bg-navy-900 text-stone-50 text-xs uppercase tracking-wider font-medium rounded-sm">Compreendi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/blog.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

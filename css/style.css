@@ -1,0 +1,53 @@
+/* ============================================================
+   Almeida & Vasconcelos — Advocacia e Consultoria Jurídica
+   Estilos customizados (complementam Tailwind CSS)
+   ============================================================ */
+
+body {
+    background-color: #FAF9F6;
+    color: #1F1E1B;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Bordas editoriais sutis */
+.editorial-border {
+    border-color: rgba(31, 30, 27, 0.12);
+}
+
+/* Transição suave entre páginas */
+.page-view {
+    animation: fadeIn 0.35s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Links de navegação com sublinhado animado */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -3px;
+    left: 0;
+    background-color: #8C6D46;
+    transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
